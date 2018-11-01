@@ -1,0 +1,5 @@
+# directories
+/node_modules
+
+# misc files
+.eslintrc.json
