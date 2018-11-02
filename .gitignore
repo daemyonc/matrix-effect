@@ -1,5 +1,6 @@
 # directories
 /node_modules
+/.vscode
 
 # misc files
 .eslintrc.json
