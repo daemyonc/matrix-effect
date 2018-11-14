@@ -1,0 +1,19 @@
+{
+  "name": "matrix-effect",
+  "version": "0.1.0",
+  "description": "digital rain matrix effect",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeomen/matrix-effect.git"
+  },
+  "author": "Damion Cronin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeomen/matrix-effect/issues"
+  },
+  "homepage": "https://github.com/codeomen/matrix-effect#readme"
+}
