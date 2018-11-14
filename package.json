@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/codeomen/matrix-effect/issues"
   },
-  "homepage": "https://github.com/codeomen/matrix-effect#readme"
+  "homepage": "https://github.com/codeomen/matrix-effect#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
 }
