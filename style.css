@@ -7,3 +7,9 @@ body {
   background-color: black;
 }
 
+.container {
+  font-family: monospace;
+  margin: 3px;
+  font-size: 3vh;
+}
+
