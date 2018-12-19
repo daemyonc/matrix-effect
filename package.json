@@ -18,5 +18,6 @@
   "homepage": "https://github.com/codeomen/matrix-effect#readme",
   "devDependencies": {
     "jest": "^23.6.0"
-  }
+  },
+  "dependencies": {}
 }
