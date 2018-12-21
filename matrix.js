@@ -9,31 +9,31 @@ function genRandCharArray() {
   return randCharArray
 }  
 
-genRandCharArray()
 // console.log(randCharArray)
 
 // basic function looping through the Array of characters based on a random starting index
 function digiStream(charList) {
-  //starting character index
-  let startChar = Math.round(Math.random() * 30)
+
   function addCharToDOM(char) {
     let container = document.querySelector('.container')
     let newDigit = document.createTextNode(char)
     container.appendChild(newDigit)
   }
+
+  // index variable for our timed loop
+  var i = 0
   // start loop
-  for (let i=startChar;i < 30;i++) {
+  var timedLoop = setInterval( function() {
     console.log(charList[i])
     addCharToDOM(charList[i])
-    if (i==29) {
-      for (let i=0;i < startChar;i++) {
-        console.log(charList[i])
-        addCharToDOM(charList[i])
-      }
-    }
-  }
+    i++
+    if (i === 30) { 
+      clearInterval(timedLoop)
+    } 
+  }, 100)
 }
 
+genRandCharArray()
 
 digiStream(randCharArray)
 
