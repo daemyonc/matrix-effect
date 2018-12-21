@@ -16,8 +16,10 @@ function digiStream(charList) {
 
   function addCharToDOM(char) {
     let container = document.querySelector('.container')
+    let column = document.createElement('div')
     let newDigit = document.createTextNode(char)
-    container.appendChild(newDigit)
+    column.appendChild(newDigit)
+    container.appendChild(column)
   }
 
   // index variable for our timed loop
