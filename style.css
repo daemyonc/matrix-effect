@@ -11,5 +11,7 @@ body {
   font-family: monospace;
   margin: 2px;
   font-size: 3vh;
+  display: flex;
+  flex-direction: column;
 }
 
