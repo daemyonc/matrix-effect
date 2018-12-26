@@ -19,7 +19,7 @@ function digiStream(charList) {
     let column = document.createElement('div')
     let newDigit = document.createTextNode(char)
     column.appendChild(newDigit)
-    container.appendChild(column)
+    container.insertBefore(newDigit,container.childNodes[0])
   }
 
   // index variable for our timed loop
