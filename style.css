@@ -9,9 +9,15 @@ body {
 
 .container {
   font-family: monospace;
-  margin: 2px;
+  margin: 1px;
   font-size: 3vh;
   display: flex;
   flex-direction: column;
+  color: green;
+}
+
+.container div:last-child {
+  color: lightgreen;
+  text-shadow: 0 0 1px chartreuse, 0 0 4px white;
 }
 

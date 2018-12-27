@@ -9,17 +9,15 @@ function genRandCharArray() {
   return randCharArray
 }  
 
-// console.log(randCharArray)
-
-// basic function looping through the Array of characters based on a random starting index
+// basic function looping through the Array of characters
 function digiStream(charList) {
 
   function addCharToDOM(char) {
     let container = document.querySelector('.container')
     let column = document.createElement('div')
     let newDigit = document.createTextNode(char)
+
     column.appendChild(newDigit)
-    // container.appendChild(column)
     container.insertBefore(column,container.childNodes[0])
   }
 
@@ -27,7 +25,7 @@ function digiStream(charList) {
   var i = 0
   // start loop
   var timedLoop = setInterval( function() {
-    console.log(charList[i])
+    // console.log(charList[i])
     addCharToDOM(charList[i])
     i++
     if (i === 30) { 
