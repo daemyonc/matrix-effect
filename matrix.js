@@ -2,9 +2,9 @@ const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 var randCharArray = []
 
 // generate random character array
-function genRandCharArray() {
-  for (let i=0; i < 30;i++) {
-    randCharArray.push(chars.charAt(Math.random() * 30))
+function genRandCharArray(len) {
+  for (let i=0; i < len;i++) {
+    randCharArray.push(chars.charAt(Math.random() * 36))
   }
   return randCharArray
 }  
@@ -34,7 +34,7 @@ function digiStream(charList) {
   }, 100)
 }
 
-genRandCharArray()
+genRandCharArray(32)
 
 digiStream(randCharArray)
 
