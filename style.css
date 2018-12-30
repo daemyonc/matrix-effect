@@ -14,10 +14,19 @@ body {
   display: flex;
   flex-direction: column;
   color: green;
+  line-height: 0.9;
 }
 
+.container > div {
+  align-content: center;
+}
 .container div:last-child {
   color: lightgreen;
   text-shadow: 0 0 1px chartreuse, 0 0 4px white;
 }
 
+/* testing alternate column layout */
+/* p {
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+} */
