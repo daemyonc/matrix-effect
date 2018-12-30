@@ -1,4 +1,4 @@
-const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+const chars = 'AZﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ123456789'
 var randCharArray = []
 
 // generate random character array
