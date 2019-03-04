@@ -16,7 +16,7 @@ function digiStream(charList) {
     let container = document.querySelector('.container')
     let column = document.createElement('div')
     let newDigit = document.createTextNode(char)
-
+    
     column.appendChild(newDigit)
     container.insertBefore(column,container.childNodes[0])
   }
@@ -27,11 +27,20 @@ function digiStream(charList) {
   var timedLoop = setInterval( function() {
     // console.log(charList[i])
     addCharToDOM(charList[i])
+    
+    if (i > 1) {
+      let bow = Math.round((Math.random() * 10));
+      let currentElement = document.querySelector('.container');
+      let currentElementChild = currentElement.firstChild;
+      if (bow === 3) {
+        currentElementChild.style.color = 'black'
+      }
+    }
     i++
     if (i === 30) { 
       clearInterval(timedLoop)
     } 
-  }, 100)
+  }, 50)
 }
 
 genRandCharArray(32)
