@@ -14,6 +14,7 @@ function genRandCharArray(len) {
 genRandCharArray(32);
 
 function addCharToDOM(char,contName) {
+  console.log(contName);
   let container = document.querySelector(contName)
   let column = document.createElement('div')
   let newDigit = document.createTextNode(char)
@@ -23,7 +24,7 @@ function addCharToDOM(char,contName) {
 }  
 
 // basic function looping through the Array of characters
-function digiStream(charList) {
+function digiStream(charList,col) {
 
   
 
@@ -32,11 +33,11 @@ function digiStream(charList) {
   // start loop
   var timedLoop = setInterval( function() {
     
-    addCharToDOM(charList[i],'.container')
+    addCharToDOM(charList[i],'.col'+col)
     
     if (i > 1) {
       let bow = Math.round((Math.random() * 10));
-      let currentElement = document.querySelector('.container');
+      let currentElement = document.querySelector('.col'+col);
       let currentElementChild = currentElement.firstChild;
       if (bow === 3) {
         currentElementChild.style.color = 'black'
@@ -49,25 +50,30 @@ function digiStream(charList) {
   }, 50)
 }
 function insertColumns() {
-  // Generate columns based on width
+  // Generate empty columns based on width
 
-  for(let c=0;c < emCount;c++) {
+  for(let c=0;c < columnCount;c++) {
     let elem = document.querySelector('.container');
     let newColDiv = document.createElement('div');
-    console.log(newColDiv);
     elem.appendChild(newColDiv).classList.add('col'+c);
   }
 }
 
-/* Future possible code
-let i;
-setInterval(() => {
-  let randColumn = Math.round((Math.random() * emCount));
-  
-  
-},50) */
-
 insertColumns();
 
-digiStream(randCharArray);
+// Add digiStream to a column randomly every 50ms
+let i;
+const addCol = setInterval(() => {
+  let randColumn = Math.round((Math.random() * columnCount));
+  
+  digiStream(randCharArray,randColumn);
+  i++;
+  if (i === 100) { 
+    clearInterval(addCol);
+    i = 0;
+  } 
+},500)
+
+
+
 
