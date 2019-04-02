@@ -62,15 +62,16 @@ function insertColumns() {
 insertColumns();
 
 // Add digiStream to a column randomly every 50ms
-let i;
+var iCol = 0;
 const addCol = setInterval(() => {
   let randColumn = Math.round((Math.random() * columnCount));
   
   digiStream(randCharArray,randColumn);
-  i++;
-  if (i === 100) { 
+  iCol++;
+  console.log(iCol);
+  if (iCol === columnCount) { 
     clearInterval(addCol);
-    i = 0;
+    iCol = 0;
   } 
 },500)
 
