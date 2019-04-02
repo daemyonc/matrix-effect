@@ -12,7 +12,6 @@ body {
   margin: 1px;
   font-size: 3vh;
   display: flex;
-  flex-direction: column;
   color: green;
   line-height: 0.9;
 }
@@ -25,8 +24,7 @@ body {
   text-shadow: 0 0 1px chartreuse, 0 0 4px white;
 }
 
-/* testing alternate column layout */
-/* p {
-  writing-mode: vertical-lr;
-  text-orientation: upright;
-} */
+[attribute^="col"] {
+display: flex;
+flex-direction: column;
+}
