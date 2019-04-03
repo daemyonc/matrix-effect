@@ -1,11 +1,14 @@
 const chars = 'AZﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ123456789'
 const emCount = window.innerWidth /
   parseFloat(getComputedStyle(document.querySelector('body'))['font-size']);
-const columnCount = Math.round(emCount / 2);
-var randCharArray = []
+const columnCount = Math.floor(emCount / 2);
+
+
+var randCharArray = [];
 
 // generate random character array
 function genRandCharArray(len) {
+  randCharArray = [];
   for (let i=0; i < len;i++) {
     randCharArray.push(chars.charAt(Math.random() * 36))
   }
@@ -13,29 +16,27 @@ function genRandCharArray(len) {
 }
 genRandCharArray(32);
 
-function addCharToDOM(char,contName) {
+const addCharToDOM = (char,contName) => {
   console.log(contName);
   let container = document.querySelector(contName)
   let column = document.createElement('div')
   let newDigit = document.createTextNode(char)
   
   column.appendChild(newDigit)
-  container.insertBefore(column,container.childNodes[0])
+  container.appendChild(column)
 }  
 
 // basic function looping through the Array of characters
 function digiStream(charList,col) {
 
-  
-
   // index variable for our timed loop
-  var i = 0
+  var idx = 0
   // start loop
-  var timedLoop = setInterval( function() {
+  const timedLoop = setInterval( () => {
     
-    addCharToDOM(charList[i],'.col'+col)
+    addCharToDOM(charList[idx],'.col'+col)
     
-    if (i > 1) {
+    if (idx > 1) {
       let bow = Math.round((Math.random() * 10));
       let currentElement = document.querySelector('.col'+col);
       let currentElementChild = currentElement.firstChild;
@@ -43,10 +44,10 @@ function digiStream(charList,col) {
         currentElementChild.style.color = 'black'
       }
     }
-    i++
-    if (i === 30) { 
+    if (idx === 30) { 
       clearInterval(timedLoop)
-    } 
+    }
+    idx++ 
   }, 50)
 }
 function insertColumns() {
@@ -64,15 +65,16 @@ insertColumns();
 // Add digiStream to a column randomly every 50ms
 var iCol = 0;
 const addCol = setInterval(() => {
-  let randColumn = Math.round((Math.random() * columnCount));
-  
+  let randColumn = Math.floor((Math.random() * columnCount));
+  genRandCharArray(32);
   digiStream(randCharArray,randColumn);
-  iCol++;
+  
   console.log(iCol);
   if (iCol === columnCount) { 
     clearInterval(addCol);
     iCol = 0;
   } 
+  iCol++;
 },500)
 
 
