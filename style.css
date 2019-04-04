@@ -1,30 +1,40 @@
 :root {
   color: green;
 }
-
+html {
+  box-sizing: border-box;
+}
 body {
-  margin: 0 auto;
+  margin: 0;
   background-color: black;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 .container {
   font-family: monospace;
+  position: relative;
   margin: 1px;
-  font-size: 3vh;
+  font-size: 14px;
   display: flex;
+  justify-content: space-between;
   color: green;
   line-height: 0.9;
+  /* max-height: 100vh; */
+  width: 100%;
 }
 
-.container > div {
-  align-content: center;
-}
-.container div:last-child {
-  color: lightgreen;
-  text-shadow: 0 0 1px chartreuse, 0 0 4px white;
-}
-
-[attribute^="col"] {
+.container div {
 display: flex;
 flex-direction: column;
+width: 2em;
+}
+.container div div {
+  align-content: center;
+  /* content: ''; */
+}
+.container div div:last-child {
+  color: lightgreen;
+  text-shadow: 0 0 1px chartreuse, 0 0 4px white;
 }
