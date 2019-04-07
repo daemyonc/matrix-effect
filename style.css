@@ -18,11 +18,12 @@ body {
   margin: 1px;
   font-size: 14px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   color: green;
-  line-height: 0.9;
+  line-height: 1.1;
   /* max-height: 100vh; */
   width: 100%;
+  overflow: hidden;
 }
 
 .container div {

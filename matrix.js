@@ -1,7 +1,19 @@
 const chars = 'AZﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ123456789'
 const emCount = window.innerWidth /
   parseFloat(getComputedStyle(document.querySelector('body'))['font-size']);
-const columnCount = Math.floor(emCount / 2);
+const columnCount = Math.floor(emCount / 1.5);
+
+function insertColumns() {
+  // Generate empty columns based on width
+
+  for(let c=0;c < columnCount;c++) {
+    let elem = document.querySelector('.container');
+    let newColDiv = document.createElement('div');
+    elem.appendChild(newColDiv).classList.add('col'+c);
+  }
+}
+
+insertColumns();
 
 
 var randCharArray = [];
@@ -14,9 +26,9 @@ function genRandCharArray(len) {
   }
   return randCharArray
 }
-genRandCharArray(32);
+genRandCharArray(60);
 
-const addCharToDOM = (char,contName) => {
+function addCharToDOM(char,contName) {
   console.log(contName);
   let container = document.querySelector(contName)
   let column = document.createElement('div')
@@ -36,46 +48,42 @@ function digiStream(charList,col) {
     
     addCharToDOM(charList[idx],'.col'+col)
     
-    if (idx > 1) {
-      let bow = Math.round((Math.random() * 10));
-      let currentElement = document.querySelector('.col'+col);
-      let currentElementChild = currentElement.firstChild;
+  if (idx > 1) {
+    let bow = Math.round((Math.random() * 10));
+    let randElem = Math.round((Math.random() * 47));
+    let currentElement = document.querySelector('.col'+col);
+    let currentElementChild = currentElement.children[randElem];
+    // let currentSibling = currentElementChild.children[randElem];
+    // let current2ndChild = currentSibling.firstChild;
+    // console.log(current2ndChild);      
+    // console.log(currentSibling);
+    console.log(currentElement);
       if (bow === 3) {
-        currentElementChild.style.color = 'black'
+        currentElementChild.style.color = 'black';
       }
     }
-    if (idx === 30) { 
+    if (idx === 48) { 
       clearInterval(timedLoop)
     }
     idx++ 
   }, 50)
 }
-function insertColumns() {
-  // Generate empty columns based on width
 
-  for(let c=0;c < columnCount;c++) {
-    let elem = document.querySelector('.container');
-    let newColDiv = document.createElement('div');
-    elem.appendChild(newColDiv).classList.add('col'+c);
-  }
-}
-
-insertColumns();
 
 // Add digiStream to a column randomly every 50ms
 var iCol = 0;
 const addCol = setInterval(() => {
   let randColumn = Math.floor((Math.random() * columnCount));
-  genRandCharArray(32);
+  genRandCharArray(50);
   digiStream(randCharArray,randColumn);
   
-  console.log(iCol);
-  if (iCol === columnCount) { 
+  // console.log(iCol);
+  if (iCol === columnCount*2) { 
     clearInterval(addCol);
     iCol = 0;
   } 
   iCol++;
-},500)
+},100)
 
 
 
