@@ -21,7 +21,7 @@ body {
   justify-content: space-evenly;
   color: green;
   line-height: 1.1;
-  /* max-height: 100vh; */
+  max-height: 100vh;
   width: 100%;
   overflow: hidden;
 }
@@ -29,7 +29,9 @@ body {
 .container div {
 display: flex;
 flex-direction: column;
-width: 2em;
+align-items: center;
+align-content: center;
+min-width: 1.3em;
 }
 .container div div {
   align-content: center;
