@@ -53,10 +53,7 @@ function digiStream(charList,col) {
     let randElem = Math.round((Math.random() * 47));
     let currentElement = document.querySelector('.col'+col);
     let currentElementChild = currentElement.children[randElem];
-    // let currentSibling = currentElementChild.children[randElem];
-    // let current2ndChild = currentSibling.firstChild;
-    // console.log(current2ndChild);      
-    // console.log(currentSibling);
+    
     console.log(currentElement);
       if (bow === 3) {
         currentElementChild.style.color = 'black';
