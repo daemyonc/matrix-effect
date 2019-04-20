@@ -12,7 +12,7 @@ body {
   background-color: black;
 }
 
-.container {
+#container {
   font-family: monospace;
   position: relative;
   margin: 1px;
@@ -26,18 +26,18 @@ body {
   overflow: hidden;
 }
 
-.container div {
+#container div {
 display: flex;
 flex-direction: column;
 align-items: center;
 align-content: center;
 min-width: 1.3em;
 }
-.container div div {
+#container div div {
   align-content: center;
   /* content: ''; */
 }
-.container div div:last-child {
+.glow {
   color: lightgreen;
   text-shadow: 0 0 1px chartreuse, 0 0 4px white;
 }
