@@ -30,13 +30,18 @@ function genRandCharArray(len) {
 genRandCharArray(60);
 
 function addCharToDOM(char, contName, idx) {
-  // console.log(contName);
   const container = document.getElementById(contName)
-  console.log(container)
+  console.log(container.children.item(idx))
   const element = document.createElement('div')
   const newDigit = document.createTextNode(char)
   element.appendChild(newDigit)
-  container.appendChild(element)  
+  if (container.children.item(0)) {
+    oldElement = container.children[idx]
+    newElement = container.appendChild(element)
+    container.replaceChild(newElement, oldElement)
+  } else {
+    container.appendChild(element)  
+  }
 }
 
 // basic function looping through the Array of characters
@@ -49,7 +54,7 @@ function digiStream(charList, col) {
 
     addCharToDOM(charList[idx], 'col'+col, idx)
     const currentElement = document.getElementById('col' + col);
-    console.log( `current element: ${currentElement}`)
+    // console.log( `current element: ${currentElement}`)
     currentElement.children[idx].classList.add('glow')
 
     if (idx > 0) {
