@@ -6,10 +6,11 @@ const columnCount = Math.floor(emCount / 1.5);
 function insertColumns() {
   // Generate empty columns based on width
 
-  for(let c=0;c < columnCount;c++) {
-    let elem = document.querySelector('.container');
+  for (let c = 0; c < columnCount; c++) {
+    let elem = document.getElementById('container');
     let newColDiv = document.createElement('div');
-    elem.appendChild(newColDiv).classList.add('col'+c);
+    newColDiv.id = ('col' + c);
+    elem.appendChild(newColDiv);
   }
 }
 
@@ -21,48 +22,55 @@ var randCharArray = [];
 // generate random character array
 function genRandCharArray(len) {
   randCharArray = [];
-  for (let i=0; i < len;i++) {
+  for (let i = 0; i < len; i++) {
     randCharArray.push(chars.charAt(Math.random() * 36))
   }
   return randCharArray
 }
 genRandCharArray(60);
 
-function addCharToDOM(char,contName) {
-  console.log(contName);
-  let container = document.querySelector(contName)
-  let column = document.createElement('div')
-  let newDigit = document.createTextNode(char)
-  
-  column.appendChild(newDigit)
-  container.appendChild(column)
-}  
+function addCharToDOM(char, contName, idx) {
+  // console.log(contName);
+  const container = document.getElementById(contName)
+  console.log(container)
+  const element = document.createElement('div')
+  const newDigit = document.createTextNode(char)
+  element.appendChild(newDigit)
+  container.appendChild(element)  
+}
 
 // basic function looping through the Array of characters
-function digiStream(charList,col) {
+function digiStream(charList, col) {
 
   // index variable for our timed loop
   var idx = 0
   // start loop
-  const timedLoop = setInterval( () => {
-    
-    addCharToDOM(charList[idx],'.col'+col)
-    
-  if (idx > 1) {
-    let bow = Math.round((Math.random() * 10));
-    let randElem = Math.round((Math.random() * 47));
-    let currentElement = document.querySelector('.col'+col);
-    let currentElementChild = currentElement.children[randElem];
-    
-    console.log(currentElement);
-      if (bow === 3) {
+  const timedLoop = setInterval(() => {
+
+    addCharToDOM(charList[idx], 'col'+col, idx)
+    const currentElement = document.getElementById('col' + col);
+    console.log( `current element: ${currentElement}`)
+    currentElement.children[idx].classList.add('glow')
+
+    if (idx > 0) {
+      currentElement.children[idx - 1].classList.remove('glow');
+      if (idx == 45) {
+        currentElement.children[idx].classList.remove('glow');
+      }
+
+      let bow = Math.round((Math.random() * 10));
+      let randElem = Math.round((Math.random() * 47));
+      let currentElementChild = currentElement.children[randElem];
+
+      console.log(currentElement);
+      if (bow === 3 && currentElementChild) {
         currentElementChild.style.color = 'black';
       }
     }
-    if (idx === 48) { 
+    if (idx === 48) {
       clearInterval(timedLoop)
     }
-    idx++ 
+    idx++
   }, 50)
 }
 
@@ -72,16 +80,12 @@ var iCol = 0;
 const addCol = setInterval(() => {
   let randColumn = Math.floor((Math.random() * columnCount));
   genRandCharArray(50);
-  digiStream(randCharArray,randColumn);
-  
+  digiStream(randCharArray, randColumn);
+
   // console.log(iCol);
-  if (iCol === columnCount*2) { 
+  if (iCol === columnCount * 2) {
     clearInterval(addCol);
     iCol = 0;
-  } 
+  }
   iCol++;
-},100)
-
-
-
-
+}, 100)
