@@ -22,11 +22,12 @@ var randIconArray = [];
 function genRandCharArray(len) {
   randIconArray = [];
   for (let i = 0; i < len; i++) {
-    randIconArray.push(Math.floor(Math.random() * 17))
+    randIconArray.push(icons[Math.floor(Math.random() * 17)])
   }
   return randIconArray
 }
 genRandCharArray(60);
+// console.log(randIconArray)
 
 function addCharToDOM(char, contName, idx) {
   const container = document.getElementById(contName)
@@ -34,7 +35,8 @@ function addCharToDOM(char, contName, idx) {
   const element = document.createElement('div')
 
   const newIcon = document.createElement('span')
-  newIcon.classList.add('far fa'+char)
+  // console.log(char)
+  newIcon.classList.add('fas', 'fa-' + char)
   element.appendChild(newIcon)
   if (container.children.item(0)) {
     oldElement = container.children[idx]
