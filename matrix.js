@@ -1,4 +1,4 @@
-const chars = 'AZﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ123456789'
+const icons = ['angry','dizzy','flushed','frown','grimace','grin','grin-beam','grin-hearts','grin-squint','grin-stars','grin-tears','grin-tongue-squint','laugh','laugh-squint','meh','smile','surprise'];
 const emCount = window.innerWidth /
   parseFloat(getComputedStyle(document.querySelector('body'))['font-size']);
 const columnCount = Math.floor(emCount / 1.5);
@@ -16,22 +16,21 @@ function insertColumns() {
 
 insertColumns();
 
-
-var randCharArray = [];
+var randIconArray = [];
 
 // generate random character array
 function genRandCharArray(len) {
-  randCharArray = [];
+  randIconArray = [];
   for (let i = 0; i < len; i++) {
-    randCharArray.push(chars.charAt(Math.random() * 36))
+    randIconArray.push(Math.floor(Math.random() * 17))
   }
-  return randCharArray
+  return randIconArray
 }
 genRandCharArray(60);
 
 function addCharToDOM(char, contName, idx) {
   const container = document.getElementById(contName)
-  console.log(container.children.item(idx))
+  
   const element = document.createElement('div')
   const newDigit = document.createTextNode(char)
   element.appendChild(newDigit)
@@ -54,7 +53,7 @@ function digiStream(charList, col) {
 
     addCharToDOM(charList[idx], 'col'+col, idx)
     const currentElement = document.getElementById('col' + col);
-    // console.log( `current element: ${currentElement}`)
+    
     currentElement.children[idx].classList.add('glow')
 
     if (idx > 0) {
@@ -85,9 +84,8 @@ var iCol = 0;
 const addCol = setInterval(() => {
   let randColumn = Math.floor((Math.random() * columnCount));
   genRandCharArray(50);
-  digiStream(randCharArray, randColumn);
+  digiStream(randIconArray, randColumn);
 
-  // console.log(iCol);
   if (iCol === columnCount * 2) {
     clearInterval(addCol);
     iCol = 0;
