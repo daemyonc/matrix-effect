@@ -32,8 +32,10 @@ function addCharToDOM(char, contName, idx) {
   const container = document.getElementById(contName)
   
   const element = document.createElement('div')
-  const newDigit = document.createTextNode(char)
-  element.appendChild(newDigit)
+
+  const newIcon = document.createElement('span')
+  newIcon.classList.add('far fa'+char)
+  element.appendChild(newIcon)
   if (container.children.item(0)) {
     oldElement = container.children[idx]
     newElement = container.appendChild(element)
