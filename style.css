@@ -33,8 +33,9 @@ align-items: center;
 align-content: center;
 min-width: 1.3em;
 }
-#container div div {
+#container div span {
   align-content: center;
+  padding: 2px;
   /* content: ''; */
 }
 .glow {
