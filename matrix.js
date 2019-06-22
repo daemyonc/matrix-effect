@@ -1,4 +1,5 @@
 const icons = ['angry','dizzy','flushed','frown','grimace','grin','grin-beam','grin-hearts','grin-squint','grin-stars','grin-tears','grin-tongue-squint','laugh','laugh-squint','meh','smile','surprise'];
+const colors = ['ff0000','ff9200','ffd300','cdf800','3408bf','0469b5','00d600','b700b7'];
 const emCount = window.innerWidth /
   parseFloat(getComputedStyle(document.querySelector('body'))['font-size']);
 const columnCount = Math.floor(emCount / 1.5);
@@ -37,6 +38,9 @@ function addCharToDOM(char, contName, idx) {
   const newIcon = document.createElement('span')
   // console.log(char)
   newIcon.classList.add('fas', 'fa-' + char)
+  function colorSelect() { return colors[Math.round(Math.random() * 8)]}
+  // console.log(colorSelect())
+  newIcon.style.color = `#${colorSelect()}`
   element.appendChild(newIcon)
   if (container.children.item(0)) {
     oldElement = container.children[idx]
@@ -70,7 +74,7 @@ function digiStream(charList, col) {
       let randElem = Math.round((Math.random() * 47));
       let currentElementChild = currentElement.children[randElem];
 
-      console.log(currentElement);
+      // console.log(currentElement);
       if (bow === 3 && currentElementChild) {
         currentElementChild.style.color = 'black';
       }
