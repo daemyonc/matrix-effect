@@ -1,3 +1,4 @@
-# Matrix Effect - Text Rain
+#   Emotrix
+### Matrix Effect - Emoji style
 
-coming soon...
+Rainbow emoji version of the Matrix digital rain effect.
