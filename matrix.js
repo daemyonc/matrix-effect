@@ -3,9 +3,8 @@ const emCount = window.innerWidth /
   parseFloat(getComputedStyle(document.querySelector('body'))['font-size']);
 const columnCount = Math.floor(emCount / 1.5);
 
+// Generate empty columns based on width
 function insertColumns() {
-  // Generate empty columns based on width
-
   for (let c = 0; c < columnCount; c++) {
     let elem = document.getElementById('container');
     let newColDiv = document.createElement('div');
@@ -27,11 +26,11 @@ function genRandCharArray(len) {
   }
   return randCharArray
 }
-genRandCharArray(60);
+// genRandCharArray(60);
 
 function addCharToDOM(char, contName, idx) {
   const container = document.getElementById(contName)
-  console.log(container.children.item(idx))
+  // console.log(container.children.item(idx))
   const element = document.createElement('div')
   const newDigit = document.createTextNode(char)
   element.appendChild(newDigit)
@@ -67,7 +66,7 @@ function digiStream(charList, col) {
       let randElem = Math.round((Math.random() * 47));
       let currentElementChild = currentElement.children[randElem];
 
-      console.log(currentElement);
+      // console.log(currentElement);
       if (bow === 3 && currentElementChild) {
         currentElementChild.style.color = 'black';
       }
@@ -84,13 +83,13 @@ function digiStream(charList, col) {
 var iCol = 0;
 const addCol = setInterval(() => {
   let randColumn = Math.floor((Math.random() * columnCount));
-  genRandCharArray(50);
+  genRandCharArray(60);
   digiStream(randCharArray, randColumn);
 
   // console.log(iCol);
-  if (iCol === columnCount * 2) {
-    clearInterval(addCol);
-    iCol = 0;
-  }
+  // if (iCol === columnCount * 2) {
+  //   clearInterval(addCol);
+  //   iCol = 0;
+  // }
   iCol++;
-}, 100)
+}, 50)
