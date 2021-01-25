@@ -5,3 +5,5 @@
 # misc files
 .eslintrc.json
 package-lock.json
+*.psd
+
