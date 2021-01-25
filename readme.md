@@ -1,3 +1,6 @@
 # Matrix Effect - Text Rain
 
-coming soon...
+Insert info coming soon...
+
+![Matrix Effect Screenshot](/MatrixScreenShot.jpg)
+
