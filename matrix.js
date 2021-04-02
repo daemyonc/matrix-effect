@@ -6,7 +6,7 @@ const columnCount = Math.floor(emCount / 1.5);
 // Generate empty columns based on width
 function insertColumns() {
   for (let c = 0; c < columnCount; c++) {
-    let elem = document.getElementById('container');
+    let elem = document.getElementById('matrix');
     let newColDiv = document.createElement('div');
     newColDiv.id = ('col' + c);
     elem.appendChild(newColDiv);
@@ -26,15 +26,14 @@ function genRandCharArray(len) {
   }
   return randCharArray
 }
-// genRandCharArray(60);
 
 function addCharToDOM(char, contName, idx) {
   const container = document.getElementById(contName)
-  // console.log(container.children.item(idx))
+  // console.log("container [addCharToDOM]", container, container.children.item(idx), contName)
   const element = document.createElement('div')
   const newDigit = document.createTextNode(char)
   element.appendChild(newDigit)
-  if (container.children.item(0)) {
+  if (container.children.item(idx) != null) {
     oldElement = container.children[idx]
     newElement = container.appendChild(element)
     container.replaceChild(newElement, oldElement)
@@ -50,15 +49,15 @@ function digiStream(charList, col) {
   var idx = 0
   // start loop
   const timedLoop = setInterval(() => {
-
-    addCharToDOM(charList[idx], 'col'+col, idx)
-    const currentElement = document.getElementById('col' + col);
-    // console.log( `current element: ${currentElement}`)
+    const container = String('col' + col);
+    addCharToDOM(charList[idx], container , idx)
+    const currentElement = document.getElementById(container);
+    // console.log( `current element/container [digiStream]: ${currentElement}`)
     currentElement.children[idx].classList.add('glow')
 
     if (idx > 0) {
       currentElement.children[idx - 1].classList.remove('glow');
-      if (idx == 45) {
+      if (idx >= 42) {
         currentElement.children[idx].classList.remove('glow');
       }
 
@@ -71,8 +70,9 @@ function digiStream(charList, col) {
         currentElementChild.style.color = 'black';
       }
     }
-    if (idx === 48) {
-      clearInterval(timedLoop)
+    if (idx === 43) {
+      idx = 0;
+      // clearInterval(timedLoop)
     }
     idx++
   }, 50)
@@ -81,15 +81,12 @@ function digiStream(charList, col) {
 
 // Add digiStream to a column randomly every 50ms
 var iCol = 0;
-const addCol = setInterval(() => {
+setInterval(() => {
   let randColumn = Math.floor((Math.random() * columnCount));
+  // console.log("[addCol loop] random column: ", randColumn);
   genRandCharArray(60);
   digiStream(randCharArray, randColumn);
 
-  // console.log(iCol);
-  // if (iCol === columnCount * 2) {
-  //   clearInterval(addCol);
-  //   iCol = 0;
-  // }
+
   iCol++;
 }, 50)
