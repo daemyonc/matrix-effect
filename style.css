@@ -12,7 +12,7 @@ body {
   background-color: black;
 }
 
-#container {
+#matrix {
   font-family: monospace;
   position: relative;
   margin: 1px;
@@ -26,14 +26,14 @@ body {
   overflow: hidden;
 }
 
-#container div {
+#matrix div {
 display: flex;
 flex-direction: column;
 align-items: center;
 align-content: center;
 min-width: 1.3em;
 }
-#container div div {
+#matrix div div {
   align-content: center;
   /* content: ''; */
 }
